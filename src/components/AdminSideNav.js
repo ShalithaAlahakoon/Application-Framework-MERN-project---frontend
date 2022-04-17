@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { AdminSideNavData } from './AdminSideNavData'
-import './AdminSideNav.css'
+import { AdminSideNavData } from './asserts/js/AdminSideNavData'
+import './asserts/css/AdminSideNav.css'
 import { IconContext } from "react-icons";
 
 function AdminSideNav() {
