@@ -7,7 +7,7 @@ function Home() {
     <div>
       <Header />
       <SideNav />
-      <div className="body">
+      <div className="body pt-4">
         <h1>Home</h1>
       </div>
 

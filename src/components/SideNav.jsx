@@ -12,11 +12,7 @@ function SideNav() {
     return (
         <>
             {/* <IconContext.Provider value={{ color: "#fff" }}> */}
-            <div className="navbar">
-                <Link to="#" className="menu-bars dark">
-                    <FaIcons.FaBars onClick={showSideNav} />
-                </Link>
-            </div>
+            
             <nav className={sideNav ? 'nav-menu active' : 'nav-menu'}>
 
                 <ul className='nav-menu-items'>
