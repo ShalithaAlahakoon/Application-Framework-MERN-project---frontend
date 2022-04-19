@@ -2,15 +2,22 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as GiIcons from "react-icons/gi";
 import * as IoIcons from "react-icons/io";
+import * as MdIcons from "react-icons/md";
 
 
 export const AdminSideNavData = [
     {
         title: 'Dashboard',
-        path: '/',
+        path: '/home',
         icon: <FaIcons.FaTachometerAlt />,
         cName: 'nav-text'
 
+    },
+    {
+        title: 'Groups',
+        path: '/groups',
+        icon: <MdIcons.MdGroup />,
+        cName: 'nav-text'
     },
     {
         title: 'Reports',
@@ -24,6 +31,7 @@ export const AdminSideNavData = [
         icon: <FaIcons.FaChild />,
         cName: 'nav-text'
     },
+   
     {
         title: 'Supervisors',
         path: '/admin/supervisors',

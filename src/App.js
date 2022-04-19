@@ -6,6 +6,7 @@ import "./assets/css/App.css";
 import Login from "./pages/Authenticaiton/Login";
 import Register from "./pages/Authenticaiton/Register";
 import Home from "./pages/Home";
+import Groups from "./pages/Groups";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                     <Route path="/" exact element={<Login/>} />
                     <Route path="/register" exact element={<Register/>} />
                     <Route path="/home" element={<Home/>} />
+                    <Route path="/groups" element={<Groups/>} />
                 </Routes>
             </Router>
         </>
