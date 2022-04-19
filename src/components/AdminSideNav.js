@@ -4,16 +4,16 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { AdminSideNavData } from './asserts/js/AdminSideNavData'
 import './asserts/css/AdminSideNav.css'
-import { IconContext } from "react-icons";
+// import { IconContext } from "react-icons";
 
 function AdminSideNav() {
     const [sideNav, setSideNav] = useState(false);
     const showSideNav = () => setSideNav(!sideNav);
     return (
         <>
-            <IconContext.Provider value={{ color: "#fff" }}>
+            {/* <IconContext.Provider value={{ color: "#fff" }}> */}
                 <div className="navbar">
-                    <Link to="#" className="menu-bars">
+                    <Link to="#" className="menu-bars dark">
                         <FaIcons.FaBars onClick={showSideNav} />
                     </Link>
                 </div>
@@ -39,7 +39,7 @@ function AdminSideNav() {
                         }
                     </ul>
                 </nav>
-            </IconContext.Provider>
+            {/* </IconContext.Provider> */}
         </>
     )
 }
