@@ -90,10 +90,7 @@ span{
 }
 
 .body{
-    margin-left: 170px;
-}
-.body.active{
-    margin-left: 250px;
+    margin-left: 130px;
 }
 
 .big-icon{
