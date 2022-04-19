@@ -5,9 +5,12 @@ import SideNav from '../components/SideNav'
 function Home() {
   return (
     <div>
-      <Header/>
-      <SideNav/>
-      <h1>Home</h1>
+      <Header />
+      <SideNav />
+      <div className="body">
+        <h1>Home</h1>
+      </div>
+
     </div>
   )
 }
