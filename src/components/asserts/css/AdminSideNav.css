@@ -11,6 +11,12 @@
     margin-left: 2rem;
     font-size: 2rem;
     background: none;
+    color: white;
+}
+
+.menu-bars-icon{
+    margin-left: 125px;
+    color: white;
 }
 
 .dark{
@@ -26,7 +32,7 @@
     justify-content: center;
     position: fixed;
     top: 80px;
-    left: -100%;
+    left: -170px;
     z-index: 1;
     overflow: hidden;
     transition: 850ms;
@@ -36,6 +42,8 @@
     left: 0;
     transition: 350ms;
 }
+
+
 
 .nav-text{
     display: flex;
@@ -79,4 +87,18 @@
 
 span{
     margin-left: 16px;
+}
+
+.body{
+    margin-left: 170px;
+}
+.body.active{
+    margin-left: 250px;
+}
+
+.big-icon{
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+    margin-left: 156px;
 }
