@@ -6,7 +6,7 @@ import { AdminSideNavData } from './asserts/js/AdminSideNavData'
 import './asserts/css/AdminSideNav.css'
 // import { IconContext } from "react-icons";
 
-function AdminSideNav() {
+function SideNav() {
     const [sideNav, setSideNav] = useState(false);
     const showSideNav = () => setSideNav(!sideNav);
     return (
@@ -44,4 +44,4 @@ function AdminSideNav() {
     )
 }
 
-export default AdminSideNav
+export default SideNav
