@@ -5,6 +5,7 @@ import * as IoIcons from "react-icons/io";
 import * as MdIcons from "react-icons/md";
 
 
+
 export const AdminSideNavData = [
     {
         title: 'Dashboard',
@@ -12,6 +13,12 @@ export const AdminSideNavData = [
         icon: <FaIcons.FaTachometerAlt />,
         cName: 'nav-text'
 
+    },
+    {
+        title: 'Students',
+        path: '/students',
+        icon: <FaIcons.FaChild />,
+        cName: 'nav-text'
     },
     {
         title: 'Groups',
@@ -25,13 +32,7 @@ export const AdminSideNavData = [
         icon: <IoIcons.IoIosPaper />,
         cName: 'nav-text'
     },
-    {
-        title: 'Students',
-        path: '/students',
-        icon: <FaIcons.FaChild />,
-        cName: 'nav-text'
-    },
-   
+    
     {
         title: 'Supervisors',
         path: '/admin/supervisors',
@@ -48,6 +49,12 @@ export const AdminSideNavData = [
         title: 'Reviews',
         path: '/admin/reviews',
         icon: <IoIcons.IoIosChatbubbles />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Research topics',
+        path: '/topics',
+        icon: <GiIcons.GiMagnifyingGlass />,
         cName: 'nav-text'
     }
 ]
