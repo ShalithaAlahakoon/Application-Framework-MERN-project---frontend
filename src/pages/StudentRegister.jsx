@@ -5,6 +5,10 @@ import { Form, Row, Col, InputGroup, Button } from 'react-bootstrap'
 import './css/studentRegister.css'
 import axios from 'axios'
 
+const qs = require('qs');
+
+
+
 function StudentRegister() {
 
     const [validated, setValidated] = useState(false);
@@ -32,11 +36,28 @@ function StudentRegister() {
         const Student = {
             name: name,
             email: email,
-            phone: phone,
+            phoneNumber: phone,
             address: address,
-            idNumber: idNumber
+            itNumber: idNumber
         }
 
+        axios.post('http://localhost:5000/api/student/add',qs.stringify(Student))
+        .then(res => {
+            console.log(res.success);
+            console.log(res.data);
+            if(res.data.success === true){
+
+                alert("Student Added Successfully");
+            }
+            else{
+                alert("Student Not Added" + res.data.message);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            alert("Student Not Added" + err);
+        })
+        
  
     };
     return (
