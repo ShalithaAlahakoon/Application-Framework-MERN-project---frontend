@@ -13,6 +13,7 @@ function StudentRegister() {
 
     const [validated, setValidated] = useState(false);
     const [name, setName] = useState('');
+    const[specialization, setSpecialization] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
@@ -31,10 +32,11 @@ function StudentRegister() {
 
         setValidated(true);
 
-        console.log(name, email, phone, address, idNumber);
+        // console.log(name, email, phone, address, idNumber);
         
         const Student = {
             name: name,
+            specialization: specialization,
             email: email,
             phoneNumber: phone,
             address: address,
@@ -80,6 +82,19 @@ function StudentRegister() {
                                             type="text"
                                             placeholder="Full name"
                                             onChange={(e) => setName(e.target.value)}
+                                        />
+                                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                        <Form.Control.Feedback type="invalid">
+                                            This field is required!
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="12" controlId="validationCustom01" className="m-2">
+                                        <Form.Label>Student specialization</Form.Label>
+                                        <Form.Control
+                                            required
+                                            type="text"
+                                            placeholder="SE"
+                                            onChange={(e) => setSpecialization(e.target.value)}
                                         />
                                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         <Form.Control.Feedback type="invalid">

@@ -54,6 +54,7 @@ function Student() {
               <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Specialization</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Address</th>
@@ -67,6 +68,7 @@ function Student() {
                     <tr key={index}>
                       <td>{student.itNumber}</td>
                       <td>{student.name}</td>
+                      <td>{student.specialization}</td>
                       <td>{student.email}</td>
                       <td>{student.phoneNumber}</td>
                       <td>{student.address}</td>
