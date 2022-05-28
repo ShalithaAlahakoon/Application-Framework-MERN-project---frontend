@@ -3,6 +3,11 @@ import Header from '../components/Header'
 import SideNav from '../components/SideNav'
 import { Form, Row, Col, InputGroup, Button } from 'react-bootstrap'
 import './css/studentRegister.css'
+import axios from 'axios'
+
+const qs = require('qs');
+
+
 
 function StudentRegister() {
 
@@ -31,10 +36,30 @@ function StudentRegister() {
         const Student = {
             name: name,
             email: email,
-            phone: phone,
+            phoneNumber: phone,
             address: address,
-            idNumber: idNumber
+            itNumber: idNumber
         }
+
+        axios.post('http://localhost:5000/api/student/add',Student)
+        .then(res => {
+            console.log(res.success);
+            console.log(res.data);
+            if(res.data.success === true){
+
+                alert("Student Added Successfully");
+                window.location.href = '/students';
+            }
+            else{
+                alert("Student Not Added" + res.data.message);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            alert("Student Not Added. " + err.response.data.message);
+        })
+        
+ 
     };
     return (
         <>
@@ -46,7 +71,7 @@ function StudentRegister() {
                 <div className="container d-flex justify-content-center">
                     <div className="card">
                         <div className="card-body">
-                            <Form noValidate validated={validated} onSubmit={handleSubmit} className="px-5 form">
+                            <Form noValidate validated={validated}  className="px-5 form">
                                 <Row className="mb-3">
                                     <Form.Group as={Col} md="12" controlId="validationCustom01" className="m-2">
                                         <Form.Label>Student Full Name</Form.Label>
@@ -125,7 +150,7 @@ function StudentRegister() {
 
                                 </Row>
                                <div className="d-flex justify-content-end">
-                               <Button type="submit">Submit form</Button>
+                               <Button type="button" onClick={handleSubmit}>Submit form</Button>
                                </div>
                                 
                             </Form>
