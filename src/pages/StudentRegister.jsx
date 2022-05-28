@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import SideNav from '../components/SideNav'
 import { Form, Row, Col, InputGroup, Button } from 'react-bootstrap'
 import './css/studentRegister.css'
+import axios from 'axios'
 
 function StudentRegister() {
 
@@ -35,6 +36,8 @@ function StudentRegister() {
             address: address,
             idNumber: idNumber
         }
+
+ 
     };
     return (
         <>
