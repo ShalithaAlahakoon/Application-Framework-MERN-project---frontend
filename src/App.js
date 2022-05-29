@@ -9,6 +9,9 @@ import Home from "./pages/Home";
 import Groups from "./pages/Groups";
 import StudentRegister from "./pages/StudentRegister";
 import Students from "./pages/Students";
+import EvaluateTopic from "./pages/EvaluateTopic";
+import EvaluatePresentation from "./pages/EvaluatePresentation";
+import GiveMarks from "./pages/MarkingForm";
 
 function App() {
     return (
@@ -21,6 +24,9 @@ function App() {
                     <Route path="/groups" element={<Groups/>} />
                     <Route path="/student/register" element={<StudentRegister/>} />
                     <Route path="/students" element={<Students/>} />
+                    <Route path="/topic" element={<EvaluateTopic/>} />
+                    <Route path="/presentation" element={<EvaluatePresentation/>} />
+                    <Route path="/giveMarks" element={<GiveMarks/>} />
                 </Routes>
             </Router>
         </>
