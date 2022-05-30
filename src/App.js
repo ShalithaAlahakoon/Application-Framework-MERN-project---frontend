@@ -11,6 +11,7 @@ import StudentRegister from "./pages/StudentRegister";
 import Students from "./pages/Students";
 import GroupRegister from "./pages/GroupRegister";
 import Topics from "./pages/Topics";
+import TopicRegister from "./pages/TopicRegister";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/students" element={<Students/>} />
                     <Route path="/group/register" element={<GroupRegister/>} />
                     <Route path="/topics" element={<Topics/>} />
+                    <Route path="/topic/register" element={<TopicRegister/>} />
                 </Routes>
             </Router>
         </>

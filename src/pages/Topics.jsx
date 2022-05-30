@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../components/Header'
-import SideNav from '../components/SideNav'
 import axios from 'axios';
-import './css/topics.css'
+import React, { useEffect, useState } from 'react';
+import Header from '../components/Header';
+import SideNav from '../components/SideNav';
+import './css/topics.css';
 
 function Topics() {
 
     const [topics, setTopics] = useState([]);
+ 
 
+
+    //get topics from api
     const getTopics = async () => {
         await axios.get("http://localhost:5000/api/researchTopic/")
             .then((res) => {
-                console.log(res.data.data);
+                // console.log(res.data.data);
                 setTopics(res.data.data);
             }).catch((err) => {
                 console.log(err);
             });
     }
 
+    //delete topics
     const deleteTopic = async (id) => {
         await axios.delete("http://localhost:5000/api/researchTopic/delete/" + id)
             .then((res) => {
@@ -30,9 +34,17 @@ function Topics() {
             });
     }
 
+  
+
+ 
+
     useEffect(() => {
         getTopics();
     }, []);
+
+    
+
+
 
     console.log('topics', topics);
     return (
@@ -43,11 +55,11 @@ function Topics() {
 
                 <div className="d-flex justify-content-between m-5">
                     <h1>Reaserch Topics Page</h1>
-                    <a href='/topic/register'><button className='btn btn-primary'>Add Reaserch Topic</button></a>
+                    <a href='/topic/register'><button type='button ' className='btn btn-primary'>Add New Topic</button></a>
                 </div>
-                <div className="m-5 d-flex">
+                <div className="m-5">
                     {
-                        topics.map((topic, index) => {
+                        topics.map((topic) => {
                             return <div className="card m-3" >
                                 <div className="card-header">
                                     <h5 className="card-title">{topic.topic}</h5>
@@ -75,14 +87,14 @@ function Topics() {
                                             <p className="card-text">Student Group</p>
                                         </div>
                                         <div className="col-9">
-                                            <p className="card-text">Group 1</p>
+                                            <p className="card-text">{topic.studentGroup}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="card-footer">
                                     <div className="d-flex justify-content-end">
                                         <button className='btn btn-primary mx-2'>Edit</button>
-                                        <button className='btn btn-danger' onClick={() =>{deleteTopic(topic._id)}}>Delete</button>
+                                        <button className='btn btn-danger' onClick={() => { deleteTopic(topic._id) }}>Delete</button>
                                     </div>
 
 

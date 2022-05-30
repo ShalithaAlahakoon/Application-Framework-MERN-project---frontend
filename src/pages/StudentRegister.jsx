@@ -1,9 +1,9 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import Header from '../components/Header'
 import SideNav from '../components/SideNav'
-import { Form, Row, Col, InputGroup, Button } from 'react-bootstrap'
 import './css/studentRegister.css'
-import axios from 'axios'
 
 const qs = require('qs');
 
@@ -20,9 +20,6 @@ function StudentRegister() {
     const [idNumber, setIdNumber] = useState('');
 
 
-
-
-
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -32,7 +29,6 @@ function StudentRegister() {
 
         setValidated(true);
 
-        // console.log(name, email, phone, address, idNumber);
         
         const Student = {
             name: name,
@@ -45,8 +41,7 @@ function StudentRegister() {
 
         axios.post('http://localhost:5000/api/student/add',Student)
         .then(res => {
-            console.log(res.success);
-            console.log(res.data);
+
             if(res.data.success === true){
 
                 alert("Student Added Successfully");
