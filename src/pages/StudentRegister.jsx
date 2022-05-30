@@ -1,20 +1,23 @@
+import axios from 'axios'
 import React, { useState } from 'react'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import Header from '../components/Header'
 import SideNav from '../components/SideNav'
-import { Form, Row, Col, InputGroup, Button } from 'react-bootstrap'
 import './css/studentRegister.css'
+
+const qs = require('qs');
+
+
 
 function StudentRegister() {
 
     const [validated, setValidated] = useState(false);
     const [name, setName] = useState('');
+    const[specialization, setSpecialization] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [idNumber, setIdNumber] = useState('');
-
-
-
 
 
     const handleSubmit = (event) => {
@@ -26,15 +29,34 @@ function StudentRegister() {
 
         setValidated(true);
 
-        console.log(name, email, phone, address, idNumber);
         
         const Student = {
             name: name,
+            specialization: specialization,
             email: email,
-            phone: phone,
+            phoneNumber: phone,
             address: address,
-            idNumber: idNumber
+            itNumber: idNumber
         }
+
+        axios.post('http://localhost:5000/api/student/add',Student)
+        .then(res => {
+
+            if(res.data.success === true){
+
+                alert("Student Added Successfully");
+                window.location.href = '/students';
+            }
+            else{
+                alert("Student Not Added" + res.data.message);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            alert("Student Not Added. " + err.response.data.message);
+        })
+        
+ 
     };
     return (
         <>
@@ -46,7 +68,7 @@ function StudentRegister() {
                 <div className="container d-flex justify-content-center">
                     <div className="card">
                         <div className="card-body">
-                            <Form noValidate validated={validated} onSubmit={handleSubmit} className="px-5 form">
+                            <Form noValidate validated={validated}  className="px-5 form">
                                 <Row className="mb-3">
                                     <Form.Group as={Col} md="12" controlId="validationCustom01" className="m-2">
                                         <Form.Label>Student Full Name</Form.Label>
@@ -55,6 +77,19 @@ function StudentRegister() {
                                             type="text"
                                             placeholder="Full name"
                                             onChange={(e) => setName(e.target.value)}
+                                        />
+                                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                        <Form.Control.Feedback type="invalid">
+                                            This field is required!
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                    <Form.Group as={Col} md="12" controlId="validationCustom01" className="m-2">
+                                        <Form.Label>Student specialization</Form.Label>
+                                        <Form.Control
+                                            required
+                                            type="text"
+                                            placeholder="SE"
+                                            onChange={(e) => setSpecialization(e.target.value)}
                                         />
                                         <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         <Form.Control.Feedback type="invalid">
@@ -125,7 +160,7 @@ function StudentRegister() {
 
                                 </Row>
                                <div className="d-flex justify-content-end">
-                               <Button type="submit">Submit form</Button>
+                               <Button type="button" onClick={handleSubmit}>Submit form</Button>
                                </div>
                                 
                             </Form>
