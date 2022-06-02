@@ -22,16 +22,18 @@ function Register() {
       password2:password2
     }
 
-    axios.post('#',newUser).then(()=>{
-      console.log("Registered Successfully")
+    axios.post('http://localhost:5000/api/user/add',newUser).then(()=>{
+      alert("Registered Successfully")
       setID("");
       setName("");
       setMobileNumber("");
       setPassword("");
       setPassword2("");
+      window.location.href = '/';
 
     }).catch((err)=>{
-      alert(err)
+      alert(err.response.data.message)
+      console.log(err)
     })
   }
 

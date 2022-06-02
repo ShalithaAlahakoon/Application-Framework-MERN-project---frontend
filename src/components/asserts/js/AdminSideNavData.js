@@ -27,8 +27,14 @@ export const AdminSideNavData = [
         cName: 'nav-text'
     },
     {
-        title: 'Reports',
-        path: '/reports',
+        title: 'Research topics',
+        path: '/topics',
+        icon: <GiIcons.GiMagnifyingGlass />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Documents',
+        path: '/document',
         icon: <IoIcons.IoIosPaper />,
         cName: 'nav-text'
     },
@@ -38,23 +44,18 @@ export const AdminSideNavData = [
         path: '/admin/supervisors',
         icon: <GiIcons.GiTeacher />,
         cName: 'nav-text'
-    },
-    {
-        title: 'Categories',
-        path: '/admin/categories',
-        icon: <IoIcons.IoIosBook />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Reviews',
-        path: '/admin/reviews',
-        icon: <IoIcons.IoIosChatbubbles />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Research topics',
-        path: '/topics',
-        icon: <GiIcons.GiMagnifyingGlass />,
-        cName: 'nav-text'
     }
+    // {
+    //     title: 'Categories',
+    //     path: '/admin/categories',
+    //     icon: <IoIcons.IoIosBook />,
+    //     cName: 'nav-text'
+    // },
+    // {
+    //     title: 'Reviews',
+    //     path: '/admin/reviews',
+    //     icon: <IoIcons.IoIosChatbubbles />,
+    //     cName: 'nav-text'
+    // },
+  
 ]
