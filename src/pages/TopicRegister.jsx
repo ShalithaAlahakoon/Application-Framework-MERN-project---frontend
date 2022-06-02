@@ -73,7 +73,7 @@ function TopicRegister() {
 
   };
 
-    //get topics from api
+    //get groups from api
 
     const getGroups = async () => {
       await axios.get("http://localhost:5000/api/group")
