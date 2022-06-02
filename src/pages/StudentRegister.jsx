@@ -41,7 +41,7 @@ function StudentRegister() {
 
         axios.post('http://localhost:5000/api/student/add',Student)
         .then(res => {
-
+            
             if(res.data.success === true){
 
                 alert("Student Added Successfully");
