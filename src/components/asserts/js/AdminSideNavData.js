@@ -41,7 +41,7 @@ export const AdminSideNavData = [
     
     {
         title: 'Supervisors',
-        path: '/admin/supervisors',
+        path: '/supervisors',
         icon: <GiIcons.GiTeacher />,
         cName: 'nav-text'
     }

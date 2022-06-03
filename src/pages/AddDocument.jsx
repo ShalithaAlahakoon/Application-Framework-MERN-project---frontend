@@ -10,16 +10,35 @@ import './css/addDocument.css';
 
 
 function AddDocument() {
+
+  const [groups, setGroups] = useState([]);
   const [file, setFile] = useState(null); // state for storing actual image
   const [previewSrc, setPreviewSrc] = useState(''); // state for storing previewImage
   const [state, setState] = useState({
     title: '',
-    description: ''
+    description: '',
+    type: '',
+    groupID: ''
   });
   const [errorMsg, setErrorMsg] = useState('');
- 
+  const documentTypes = [
+   
+    { value: 'Document', label: 'Document' },
+    { value: 'Presentation', label: 'Presentation' },
+  ]
+
   const dropRef = useRef(); // React ref for managing the hover state of droppable area
 
+
+  const getGroups = async () => {
+    await axios.get("http://localhost:5000/api/group")
+      .then((res) => {
+        console.log(res.data.data);
+        setGroups(res.data.data);
+      }).catch((err) => {
+        console.log(err);
+      });
+  }
   const handleInputChange = (event) => {
     setState({
       ...state,
@@ -36,21 +55,23 @@ function AddDocument() {
       setPreviewSrc(fileReader.result);
     };
     fileReader.readAsDataURL(uploadedFile);
-    
+
   };
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-  
+
     try {
-      const { title, description } = state;
+      const { title, description, type, groupID } = state;
       if (title.trim() !== '' && description.trim() !== '') {
         if (file) {
           const formData = new FormData();
           formData.append('file', file);
           formData.append('title', title);
           formData.append('description', description);
-  
+          formData.append('type', type);
+          formData.append('groupID', groupID);
+
           setErrorMsg('');
           await axios.post(`http://localhost:5000/api/document/upload`, formData, {
             headers: {
@@ -76,6 +97,10 @@ function AddDocument() {
     }
   };
 
+  useEffect(() => {
+    getGroups();
+  }, []);
+
   return (
     <React.Fragment>
       <Header />
@@ -87,6 +112,34 @@ function AddDocument() {
             <div className="card-body">
               <Form className="search-form d-flex flex-column" onSubmit={handleOnSubmit}>
                 {errorMsg && <p className="errorMsg">{errorMsg}</p>}
+                <Row>
+                  <Col>
+                    <Form.Group controlId="groupID" className="m-1">
+                      <select className="form-control" name="groupID" onChange={handleInputChange}>
+                        <option value="">Select Group</option>
+                        {groups.map((group, index) => {
+                          return (
+                            <option key={index} value={group._id}>{group.name}</option>
+                          )
+                        })}
+                      </select>
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Form.Group controlId="groupID" className="m-1">
+                      <select className="form-control" name="type" onChange={handleInputChange}>
+                        <option value="">Select Document Type</option>
+                        {documentTypes.map((document, index) => {
+                          return (
+                            <option key={index} value={document.value}>{document.label}</option>
+                          )
+                        })}
+                      </select>
+                    </Form.Group>
+                  </Col>
+                </Row>
                 <Row>
                   <Col>
                     <Form.Group controlId="title" className="m-1">
@@ -127,7 +180,7 @@ function AddDocument() {
                       </div>
                     )}
                   </Dropzone>
-                
+
                 </div>
                 <Button variant="primary" type="submit" className="m-1">
                   Submit
