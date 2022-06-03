@@ -21,6 +21,8 @@ import TopicRegister from "./pages/TopicRegister";
 import Document from "./pages/Document";
 import AddDocument from "./pages/AddDocument";
 
+import Supervisors from "./pages/Supervisors";
+
 
 function App() {
     return (
@@ -46,6 +48,8 @@ function App() {
 
                     <Route es path="/document" element={<Document/>} />
                     <Route path="/addDocument" element={<AddDocument/>} />
+
+                    <Route path="/supervisors" element={<Supervisors/>} />
 
                 </Routes>
             </Router>
