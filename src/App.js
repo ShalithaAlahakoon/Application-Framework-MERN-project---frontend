@@ -23,6 +23,12 @@ import AddDocument from "./pages/AddDocument";
 
 import Supervisors from "./pages/Supervisors";
 
+import DocumnetEvaluation from "./pages/DocumentEvaluation";
+
+import EvaluateDocument from "./pages/EvaluateDocument";
+
+import AcceptTopic from "./pages/AcceptTopic"
+
 
 function App() {
     return (
@@ -50,6 +56,9 @@ function App() {
                     <Route path="/addDocument" element={<AddDocument/>} />
 
                     <Route path="/supervisors" element={<Supervisors/>} />
+                    <Route path="/documentEvaluation" element={<DocumnetEvaluation/>}/>
+                    <Route path="/evaluate" element={<EvaluateDocument/>}/>
+                    <Route path="/acceptTopic" element={<AcceptTopic/>}/>
 
                 </Routes>
             </Router>
