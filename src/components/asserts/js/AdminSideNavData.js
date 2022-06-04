@@ -5,7 +5,6 @@ import * as IoIcons from "react-icons/io";
 import * as MdIcons from "react-icons/md";
 
 
-
 export const AdminSideNavData = [
     {
         title: 'Dashboard',
@@ -39,6 +38,20 @@ export const AdminSideNavData = [
         cName: 'nav-text'
     },
     
+    {
+        title: 'Evaluate Documents',
+        path: '/documentEvaluation',
+        icon: <IoIcons.IoIosAnalytics />,
+        cName: 'nav-text'
+    },
+
+    {
+        title: 'Accept Topics',
+        path: '/acceptTopic',
+        icon: <IoIcons.IoIosCheckmark />,
+        cName: 'nav-text'
+    },
+
     {
         title: 'Supervisors',
         path: '/supervisors',
