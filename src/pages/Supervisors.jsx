@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Header from '../components/Header'
 import SideNav from '../components/SideNav'
 import axios from 'axios';
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey('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');
+import EmailService  from "../services/email-service";
 
 function Supervisors() {
 
@@ -52,48 +51,38 @@ function Supervisors() {
         getStudentByID('6291e56902442fd64bc93f74');
         getSupervisorByID(id);
 
-        const studentEmail = students[0].email;
-        const supervisorEmail = supervisor[0].email;
+        const studentEmail = students.email;
+        const supervisorEmail = supervisor.email;
+        const studentName = students.name;
+        const studentPhone = students.phone;
 
 
         console.log(students);
         console.log(supervisor);
-        const msg = {
-            to: {supervisorEmail},
-            from: {studentEmail}, // Use the email address or domain you verified above
-            subject: 'Request for Supervisor',
-            text: 'Hello,\n\n' +
-                'This is a confirmation that you have been selected as a supervisor for the student ' + students[0].name + '\n\n' +
-                'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                'http://localhost:3000/supervisor/' + id + '/' + students[0]._id + '/' + students[0].name + '/' + students[0].email + '/' + students[0].phone + '/' + students[0].address + '/' + 
-                'If you did not request this, please ignore this email and your password will remain unchanged.\n',
-            html: '<strong>Hello,</strong><br><br>' +
-                'This is a confirmation that you have been selected as a supervisor for the student ' + students[0].name + '<br><br>' +
-                'Please click on the following link, or paste this into your browser to complete the process:<br><br>' +
-                '<a href="http://localhost:3000/supervisor/' + id + '/' + students[0]._id + '/' + students[0].name + '/' + students[0].email + '/' + students[0].phone + '/' + students[0].address + '/">http://localhost:3000/supervisor/' + id + '/' + students[0]._id + '/' + students[0].name + '/' + students[0].email + '/' + students[0].phone + '/' + students[0].address + '/</a><br><br>' +
-                'If you did not request this, please ignore this email and your password will remain unchanged.<br>'
+
+        const values = {
+            from_name : studentName,
+            to_name: supervisorEmail,
+            student_name: studentName,
+            student_email: studentEmail,
+            student_phone: studentPhone,
+            message: "Hello, I would like to request you to be a supervisor for my project. Please accept my request." +
+                " I am looking for a supervisor. Please contact me at: " + studentEmail +
+                " and I will be happy to talk to you about my project. Thank you." 
+                
+             
+        }
+
+        console.log ('values = ' + values);
+        try{
+           await EmailService.sendEmail(values);
+  
+        } catch (error) {
+            alert(error);
+        }
+  
 
 
-        };
-
-        // sgMail
-        //     .send(msg)
-        //     .then(() => { }, error => {
-        //         console.error(error);
-
-        //         if (error.response) {
-        //             console.error(error.response.body)
-        //         }
-        //     });
-        // await axios.post("http://localhost:5000/api/supervisor/request/" + id)
-        //     .then((res) => {
-        //         alert("Request Sent Successfully");
-        //         console.log(res.data);
-        //         getSupervisors();
-        //     }).catch((err) => {
-        //         console.log(err);
-        //         alert("Request Not Sent");
-        //     });
     }
 
     return (
